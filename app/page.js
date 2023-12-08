@@ -10,14 +10,7 @@ import {
   MediaRenderer,
   darkTheme,
   ThirdwebProvider,
-  embeddedWallet,
   useAddress,
-  localWallet,
-  smartWallet,
-  metamaskWallet,
-  useContract,
-  useMetadata,
-  Web3Button
 } from "@thirdweb-dev/react";
 
 import { customSmartWallet, customSmartWallet2 } from "./constants/walletConfig"
@@ -59,7 +52,7 @@ const Landing = () => {
 
       {address ?
         //Wallet Connected Page (Marketplace)
-        <ConnectWallet />
+        router.push(`/profile/${address}`)
 
         :
         //Wallet Not Connected (Landing Page)
