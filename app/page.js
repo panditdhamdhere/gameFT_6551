@@ -58,10 +58,11 @@ const Landing = () => {
     <div>
       {address ? (
         //Wallet Connected Page (Marketplace)
+
         <ConnectWallet />
       ) : (
         //Wallet Not Connected (Landing Page)
-        <main className="flex h-screen items-center justify-center bg-gradient-to-r from-yellow-200 via-yellow-400 to-yellow-700">
+        <main className="flex h-screen items-center justify-center ">
           <ConnectWallet
             theme={customeTheme}
             modalSize={"wide"}
