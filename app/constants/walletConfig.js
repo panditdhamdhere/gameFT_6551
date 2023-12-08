@@ -1,8 +1,11 @@
+
 import { smartWallet, embeddedWallet, localWallet } from "@thirdweb-dev/react";
+const factoryAddress = process.env.NEXT_PUBLIC_FACTORY_ADDRESS
+console.log(process.env.NEXT_PUBLIC_FACTORY_ADDRESS)
 
 //gasless implementation
 const smartWalletOptions = {
-    factoryAddress: "0x8615a6223ca29d0E11f8882f8dB8841967B0947b",
+    factoryAddress: factoryAddress,
     gasless: true,
   };
 

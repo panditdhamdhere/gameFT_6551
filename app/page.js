@@ -1,6 +1,7 @@
 'use client'
+
 import {useRouter} from 'next/navigation';
-const ClientId = process.env.CLIENT_ID
+const ClientId = process.env.NEXT_PUBLIC_CLIENT_ID
 
 import Image from 'next/image'
 
