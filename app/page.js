@@ -1,5 +1,6 @@
 'use client'
 import {useRouter} from 'next/navigation';
+const ClientId = process.env.CLIENT_ID
 
 import Image from 'next/image'
 
@@ -23,8 +24,8 @@ import { customSmartWallet, customSmartWallet2 } from "./constants/walletConfig"
 export default function Home() {
   return (
     <ThirdwebProvider
-      activeChain="mumbai"
-      clientId="380b8443e6fa23921cde8c690f9a9bca"
+      activeChain={"polygon"}
+      clientId={ClientId}
       supportedWallets={[
         customSmartWallet,
         customSmartWallet2,
