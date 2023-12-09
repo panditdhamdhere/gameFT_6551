@@ -9,9 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@radix-ui/react-avatar": "^1.0.4",
     "@splinetool/react-spline": "^2.2.6",
     "@splinetool/runtime": "^0.9.520",
-    "@radix-ui/react-avatar": "^1.0.4",
     "@thirdweb-dev/react": "^4.1.12",
     "@thirdweb-dev/sdk": "^4.0.19",
     "class-variance-authority": "^0.7.0",
@@ -22,6 +22,7 @@
     "next": "14.0.4",
     "react": "^18",
     "react-dom": "^18",
+    "react-hook-form": "^7.48.2",
     "react-icons": "^4.12.0",
     "spline": "^0.0.0",
     "tailwind-merge": "^2.1.0",
