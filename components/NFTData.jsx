@@ -7,7 +7,7 @@ export default function NFTData({
   isLoading,
   data,
   overrideOnclickBehavior,
-  emptyText = "No NFTs Found",
+  emptyText = "",
 }) {
   const address = NFT_DROP_ADDRESS;
 

@@ -12,7 +12,7 @@ import Link from "next/link";
 let customDarkTheme;
 const Navbar = () => {
   const address = useAddress();
-  const [activeButton, setActiveButton] = useState(1);
+  const [activeButton, setActiveButton] = useState(null);
 
   const handleClick = (buttonNumber) => {
     setActiveButton(buttonNumber);

@@ -7,7 +7,7 @@ export default function NFTGrid({
   isLoading,
   data,
   overrideOnclickBehavior,
-  emptyText = "No NFTs Found",
+  emptyText = "",
 }) {
   const contractAddress = NFT_DROP_ADDRESS;
 

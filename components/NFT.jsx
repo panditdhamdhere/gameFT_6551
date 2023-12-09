@@ -4,6 +4,7 @@ import {
   useValidDirectListings,
   useValidEnglishAuctions,
 } from "@thirdweb-dev/react";
+import { ColorRing } from "react-loader-spinner";
 
 import {
   Card,
@@ -33,28 +34,40 @@ export default function NFTComponent({ nft }) {
   return (
     <div>
       <Card className="each-nft-container">
-        <CardHeader className="nft-header">
-          <CardTitle className="metadata-name">{nft.metadata.name}</CardTitle>
-          <CardDescription>Token ID #{nft.metadata.id}</CardDescription>
-        </CardHeader>
-        <ThirdwebNftMedia metadata={nft.metadata} className="nft-img" />
-        <CardContent>
-          {loadingMarketplace || loadingDirectListing ? (
-            <h1>Loading</h1>
-          ) : directListing && directListing[0] ? (
-            <div>
-              <h2>
-                Price: {directListing[0]?.currencyValuePerToken.displayValue}{" "}
-                {directListing[0]?.currencyValuePerToken.symbol}
-              </h2>
-            </div>
-          ) : (
-            <div>
-              <h3>NFT Not listed for sale</h3>
-            </div>
-          )}
-        </CardContent>
-        <CardFooter></CardFooter>
+        <div>
+          <CardHeader className="nft-header">
+            <CardTitle className="metadata-name">{nft.metadata.name}</CardTitle>
+            <CardDescription>Token ID #{nft.metadata.id}</CardDescription>
+          </CardHeader>
+          <ThirdwebNftMedia metadata={nft.metadata} className="nft-img" />
+          <CardContent>
+            {loadingMarketplace || loadingDirectListing ? (
+              <ColorRing
+                visible={true}
+                height="80"
+                width="80"
+                ariaLabel="blocks-loading"
+                wrapperStyle={{}}
+                wrapperClass="blocks-wrapper"
+                colors={["#e15b64", "#f47e60", "#f8b26a", "#abbd81", "#849b87"]}
+              />
+            ) : directListing && directListing[0] ? (
+              <div className="card-footer">
+                <h3>
+                  Price: {directListing[0]?.currencyValuePerToken.displayValue}{" "}
+                  {directListing[0]?.currencyValuePerToken.symbol}
+                </h3>
+                <button>View Assets</button>
+              </div>
+            ) : (
+              <div className="card-footer">
+                <h3>NFT Not listed for sale</h3>
+                <button>View Assets</button>
+              </div>
+            )}
+          </CardContent>
+          <CardFooter></CardFooter>
+        </div>
       </Card>
     </div>
   );
