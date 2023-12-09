@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@airstack/airstack-react": "^0.6.1",
     "@radix-ui/react-avatar": "^1.0.4",
     "@splinetool/react-spline": "^2.2.6",
     "@splinetool/runtime": "^0.9.520",
