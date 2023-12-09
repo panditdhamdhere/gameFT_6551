@@ -11,11 +11,11 @@ export default function NFTGrid({
   const contractAddress = NFT_DROP_ADDRESS;
 
   return (
-    <div>
+    <div style={{ display: "flex" }}>
       {isLoading ? (
         <h2>Loading.....</h2>
       ) : data && data.length > 0 ? (
-        <div className="grid grid-cols-4 gap-4 px-4">
+        <div className="grid grid-cols-4 gap-10 m-8">
           {data.map((nft) =>
             !overrideOnclickBehavior ? (
               <Link

@@ -1,8 +1,11 @@
-'use client'
-import { useState, useEffect } from 'react'
-import { NFT_DROP_ADDRESS,MARKETPLACE_ADDRESS } from '../../../constants/constant'
-const ClientID = process.env.NEXT_PUBLIC_CLIENT_ID
-const SecretKey = process.env.NEXT_PUBLIC_SECRET_KEY
+"use client";
+import { useState, useEffect } from "react";
+import {
+  NFT_DROP_ADDRESS,
+  MARKETPLACE_ADDRESS,
+} from "../../../constants/constant";
+const ClientID = process.env.NEXT_PUBLIC_CLIENT_ID;
+const SecretKey = process.env.NEXT_PUBLIC_SECRET_KEY;
 
 import {
   MediaRenderer,
@@ -17,10 +20,10 @@ import {
   embeddedWallet,
   localWallet,
   metamaskWallet,
-} from '@thirdweb-dev/react'
-import Navbar from '@/components/Navbar'
-import { NFT, ThirdwebSDK } from '@thirdweb-dev/sdk'
-import React from 'react'
+} from "@thirdweb-dev/react";
+import Navbar from "@/components/Navbar";
+import { NFT, ThirdwebSDK } from "@thirdweb-dev/sdk";
+import React from "react";
 import {
   Card,
   CardContent,
@@ -28,82 +31,80 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from '@/components/ui/card'
+} from "@/components/ui/card";
 
 import {
   customSmartWallet,
   customSmartWallet2,
-} from '../../../constants/walletConfig'
+} from "../../../constants/walletConfig";
 
 export default function Token(params) {
-  const [nft, setNft] = useState()
-  const [contractMetadata, setContractMetadata] = useState()
+  const [nft, setNft] = useState();
+  const [contractMetadata, setContractMetadata] = useState();
 
   useEffect(() => {
-    data()
-  }, [])
+    data();
+  }, []);
 
   async function data() {
-    console.log(params)
-    const { nft, contractMetadata } = await getData(params)
-    console.log(nft)
-    setNft(nft)
-    setContractMetadata(contractMetadata)
-    console.log('fuck')
+    console.log(params);
+    const { nft, contractMetadata } = await getData(params);
+    console.log(nft);
+    setNft(nft);
+    setContractMetadata(contractMetadata);
+    console.log("fuck");
   }
   return (
     <ThirdwebProvider
-      activeChain={'polygon'}
+      activeChain={"polygon"}
       clientId={ClientID}
       supportedWallets={[customSmartWallet, customSmartWallet2]}
     >
       <Navbar />
       <TokenPage nft={nft} contractMetadata={contractMetadata} />
     </ThirdwebProvider>
-  )
+  );
 }
 
 const TokenPage = ({ nft, contractMetadata }) => {
   const { contract: marketplace, isLoading: loadingMarketplace } = useContract(
     MARKETPLACE_ADDRESS,
-    'marketplace-v3',
-  )
+    "marketplace-v3"
+  );
 
-  const { contract: nftCollection } = useContract(
-    NFT_DROP_ADDRESS,
-  )
+  const { contract: nftCollection } = useContract(NFT_DROP_ADDRESS);
 
-  const {
-    data: directListing,
-    isLoading: loadingDirectListing,
-  } = useValidDirectListings(marketplace, {
-    tokenContract: NFT_DROP_ADDRESS,
-    tokenId: nft?.metadata.id,
-  })
+  const { data: directListing, isLoading: loadingDirectListing } =
+    useValidDirectListings(marketplace, {
+      tokenContract: NFT_DROP_ADDRESS,
+      tokenId: nft?.metadata.id,
+    });
 
   async function buyListing() {
-    let txResult
+    let txResult;
 
     //Add for auction section
     if (directListing?.[0]) {
       txResult = await marketplace?.directListings.buyFromListing(
         directListing[0].id,
-        1,
-      )
+        1
+      );
     } else {
-      throw new Error('No listing found')
+      throw new Error("No listing found");
     }
 
-    return txResult
+    return txResult;
   }
 
   return (
     <div className="m-9">
       {nft ? (
         <div className="w-64">
-          <Card>
-            <CardHeader>
-              <CardTitle>{nft.metadata.name}</CardTitle>
+          <Card className="each-nft-container">
+            <CardHeader className="nft-header">
+              <CardTitle className="metadata-name">
+                {nft.metadata.name}
+              </CardTitle>
               <CardDescription>{nft.metadata.description}</CardDescription>
               <ThirdwebNftMedia
                 metadata={nft.metadata}
@@ -116,12 +117,10 @@ const TokenPage = ({ nft, contractMetadata }) => {
                 <div>
                   <h2>
                     {directListing[0]?.currencyValuePerToken.displayValue}
-                    {' ' + directListing[0]?.currencyValuePerToken.symbol}
+                    {" " + directListing[0]?.currencyValuePerToken.symbol}
                   </h2>
                   <Web3Button
-                    contractAddress={
-                      NFT_DROP_ADDRESS
-                    }
+                    contractAddress={NFT_DROP_ADDRESS}
                     action={async () => buyListing()}
                     isDisabled={!directListing || !directListing[0]}
                   >
@@ -138,34 +137,34 @@ const TokenPage = ({ nft, contractMetadata }) => {
         <h1>No NFT Found</h1>
       )}
     </div>
-  )
-}
+  );
+};
 
 export const getData = async (context) => {
-  const tokenId = context.params?.tokenId
-  const contractAddress = context.params?.contractAddress
+  const tokenId = context.params?.tokenId;
+  const contractAddress = context.params?.contractAddress;
 
-  console.log(context.params?.tokenId)
+  console.log(context.params?.tokenId);
 
-  const sdk = new ThirdwebSDK('polygon', {
+  const sdk = new ThirdwebSDK("polygon", {
     clientId: ClientID,
     secretKey: SecretKey,
-  })
-  const contract = await sdk.getContract(contractAddress)
+  });
+  const contract = await sdk.getContract(contractAddress);
 
-  const nft = await contract.erc721.get(tokenId)
+  const nft = await contract.erc721.get(tokenId);
 
-  let contractMetadata
+  let contractMetadata;
 
   try {
-    contractMetadata = await contract.metadata.get()
+    contractMetadata = await contract.metadata.get();
   } catch (e) {}
 
   return {
     nft,
     contractMetadata: contractMetadata,
-  }
-}
+  };
+};
 
 // export const getStaticPaths = async () => {
 //   const sdk = new ThirdwebSDK('mumbai', {
