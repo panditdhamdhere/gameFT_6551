@@ -11,10 +11,9 @@ import {
   ThirdwebProvider,
   useAddress,
   Web3Button,
-  ConnectWallet,
-} from "@thirdweb-dev/react";
-// import NFTData from '@/components/NFTData'
-// import Navbar from '@/components/Navbar'
+} from '@thirdweb-dev/react'
+import NFTData from '@/components/NFTData'
+import Navbar from '@/components/Navbar'
 
 import {
   customSmartWallet,
@@ -45,14 +44,13 @@ const Address = () => {
   console.log(ownedNfts);
   return address ? (
     <div>
-      {/* <Navbar />
+      <Navbar />
       <NFTData
         data={ownedNfts}
         isLoading={loadingOwnedNfts}
         address={address}
         emptyText={"You don't own any NFTs yet from this collection."}
-      /> */}
-      <Navbar />
+      /> 
       <div className="flex flex-col justify-center items-center mt-3">
         <Web3Button
           contractAddress={NFT_DROP_ADDRESS}
@@ -65,7 +63,7 @@ const Address = () => {
     </div>
   ) : (
     <div>
-      {/* <Navbar /> */}
+      <Navbar />
       <p>Connect Wallet</p>
     </div>
   );
