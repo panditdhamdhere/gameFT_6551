@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@airstack/airstack-react": "^0.6.1",
+    "@lens-protocol/react-web": "^2.0.0-alpha.25",
     "@radix-ui/react-avatar": "^1.0.4",
     "@splinetool/react-spline": "^2.2.6",
     "@splinetool/runtime": "^0.9.520",

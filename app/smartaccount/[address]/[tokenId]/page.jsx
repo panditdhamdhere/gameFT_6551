@@ -143,7 +143,6 @@ const SmartAccount = ({ nft, contractMetadata }) => {
               </CardDescription>
             </CardHeader>
           </Card>
-          <ConnectWallet />
           <Link className="cursor-pointer" href="/share"><p>Share</p></Link>
           </div>
           <GameConnected signer={signer} />
