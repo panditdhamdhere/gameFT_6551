@@ -8,7 +8,10 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
-import { NFT_DROP_ADDRESS,MARKETPLACE_ADDRESS } from '../../../constants/constant'
+import {
+  NFT_DROP_ADDRESS,
+  MARKETPLACE_ADDRESS,
+} from '../../../constants/constant'
 const ClientID = process.env.NEXT_PUBLIC_CLIENT_ID
 const SecretKey = process.env.NEXT_PUBLIC_SECRET_KEY
 import {
@@ -16,6 +19,7 @@ import {
   ThirdwebProvider,
   useWallet,
   useAddress,
+  ConnectWallet
 } from '@thirdweb-dev/react'
 import Navbar from '@/components/Navbar'
 import { ThirdwebSDK } from '@thirdweb-dev/sdk'
@@ -24,7 +28,7 @@ import Link from 'next/link'
 import {
   customSmartWallet,
   customSmartWallet2,
-} from "../../../constants/walletConfig";
+} from '../../../constants/walletConfig'
 
 export default function TokenBound(params) {
   const [nft, setNft] = useState()
@@ -44,7 +48,7 @@ export default function TokenBound(params) {
 
   return (
     <ThirdwebProvider
-      activeChain={"polygon"}
+      activeChain={'polygon'}
       clientId={ClientID}
       supportedWallets={[customSmartWallet, customSmartWallet2]}
     >
@@ -85,11 +89,11 @@ const SmartAccount = ({ nft, contractMetadata }) => {
   }, [nft, smartWalletAddress, address, wallet])
 
   return (
-    <div className="w-full border border-blue-600">
+    <div className="w-full">
       {!game ? (
         <>
-          <div className="w-64">
-            <Card>
+          <div className="w-72">
+            <Card className="w-full">
               <CardHeader>
                 <CardTitle>{nft.metadata?.name}</CardTitle>
                 <CardDescription>{nft.metadata?.description}</CardDescription>
@@ -99,25 +103,29 @@ const SmartAccount = ({ nft, contractMetadata }) => {
                   height="100%"
                 />
                 <CardDescription className="w-14">
-                  {smartWalletAddress}
+                  <p className="font-bold text-">
+                    {`${smartWalletAddress}`.substr(0, 4)}.....
+                    {`${smartWalletAddress}`.substr(-4)}
+                  </p>
                 </CardDescription>
               </CardHeader>
             </Card>
           </div>
           <div className="cursor-pointer" onClick={() => setGame(true)}>
-            <Card className="w-52 ml-3 mt-7">
+            <Card className="relative w-52 ml-3 mt-7">
               <CardHeader>
-                <CardTitle>Flappy Bird Game</CardTitle>
+                <CardTitle>Grand Cyber Auto</CardTitle>
                 <CardDescription>First game</CardDescription>
               </CardHeader>
             </Card>
           </div>
         </>
       ) : (
-        <div className="w-full">
-          <button onClick={() => setGame(false)}>
-                back
-            </button>
+        <div className="w-full flex">
+          <div>
+            <button className="text-white" onClick={() => setGame(false)}>back</button>
+          </div>
+        <div>
           <Card className="w-64">
             <CardHeader>
               <CardTitle>{nft.metadata?.name}</CardTitle>
@@ -128,10 +136,15 @@ const SmartAccount = ({ nft, contractMetadata }) => {
                 height="100%"
               />
               <CardDescription className="w-14">
-                {smartWalletAddress}
+                <p className="font-bold text-">
+                  {`${smartWalletAddress}`.substr(0, 4)}.....
+                  {`${smartWalletAddress}`.substr(-4)}
+                </p>
               </CardDescription>
             </CardHeader>
           </Card>
+          <ConnectWallet />
+          </div>
           <GameConnected signer={signer} />
         </div>
       )}

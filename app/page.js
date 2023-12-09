@@ -1,6 +1,6 @@
 "use client";
 import { FaArrowRight } from "react-icons/fa6";
-
+import Spline from "@splinetool/react-spline";
 import { useRouter } from "next/navigation";
 const ClientId = process.env.NEXT_PUBLIC_CLIENT_ID;
 import Image from "next/image";
@@ -43,8 +43,9 @@ const Landing = () => {
       secondaryText: "white",
       walletSelectorButtonHoverBg: "rgb(194, 207, 204)",
       separatorLine: "#888",
-      borderColor: "#333333",
+      // borderColor: "#333333",
       borderRadius: "100px",
+      border: "1px solid white",
     },
   });
 
@@ -75,17 +76,14 @@ const Landing = () => {
                 theme={customeTheme}
                 btnTitle="Enter Game"
                 modalTitle="GameFT"
-                modalTitleIconUrl="/assets/imgs/walletlogo.png"
+                // modalTitleIconUrl="/assets/imgs/walletlogo.png"
                 welcomeScreen={() => {
                   return (
                     <div>
-                      {/* <MediaRenderer
-                        src={
-                          "ipfs://QmT5ULF1ZQpsKUHmnWk7yBoPCnSYLQckAR9VRcEopFBiSN/game-box-gif.gif"
-                        }
+                      <MediaRenderer
                         width={570}
                         style={{ objectFit: "fill", objectPosition: "right" }}
-                      /> */}
+                      />
                     </div>
                   );
                 }}
@@ -93,6 +91,7 @@ const Landing = () => {
             </div>
             <div className="right">
               {/* <Spline scene="https://prod.spline.design/eHp77GJEs98xT8-4/scene.splinecode" /> */}
+              <Spline scene="https://prod.spline.design/Nu4nr-9eCUbLHGil/scene.splinecode" />
             </div>
           </div>
         </main>
