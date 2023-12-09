@@ -50,7 +50,7 @@ const Address = () => {
           <div className="circle"></div>
           <div className="line"></div>
         </div>
-        <h1>GENRATE YOUR PROFILE</h1>
+        <h1>GENREATE YOUR PROFILE</h1>
         <div className="line-circle">
           <div className="line"></div>
           <div className="circle"></div>
@@ -75,7 +75,6 @@ const Address = () => {
   ) : (
     <div>
       <Navbar />
-      <p>Connect Wallet</p>
     </div>
   );
 };
