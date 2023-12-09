@@ -13,10 +13,11 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
+import { MARKETPLACE_ADDRESS, NFT_DROP_ADDRESS } from '@/app/constants/constant'
 
 export default function NFTComponent({ nft }) {
   const { contract: marketplace, isLoading: loadingMarketplace } = useContract(
-    '0x9c5DC0F93F70Edc4bE9239c777F5C289b6756c51',
+    MARKETPLACE_ADDRESS,
     'marketplace-v3',
   )
 
@@ -24,7 +25,7 @@ export default function NFTComponent({ nft }) {
     data: directListing,
     isLoading: loadingDirectListing,
   } = useValidDirectListings(marketplace, {
-    tokenContract: '0xfD166cCCb9c00113DfFEd958dD2809A2610e1149',
+    tokenContract: NFT_DROP_ADDRESS,
     tokenId: nft.metadata.id,
   })
 

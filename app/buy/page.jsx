@@ -15,6 +15,7 @@ import {
 } from '../constants/walletConfig'
 
 export default function Page() {
+    
   return (
     <ThirdwebProvider
       activeChain={'polygon'}
