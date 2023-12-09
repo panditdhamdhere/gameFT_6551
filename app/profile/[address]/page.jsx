@@ -66,6 +66,7 @@ const Address = () => {
         <Web3Button
           contractAddress={NFT_DROP_ADDRESS}
           action={(contract) => contract.erc721.claim(1)}
+          className="claim-btn"
         >
           Claim New NFT
         </Web3Button>{" "}

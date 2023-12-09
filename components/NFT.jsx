@@ -3,7 +3,7 @@ import {
   useContract,
   useValidDirectListings,
   useValidEnglishAuctions,
-} from '@thirdweb-dev/react'
+} from "@thirdweb-dev/react";
 
 import {
   Card,
@@ -12,21 +12,19 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from '@/components/ui/card'
+} from "@/components/ui/card";
 
 export default function NFTComponent({ nft }) {
   const { contract: marketplace, isLoading: loadingMarketplace } = useContract(
-    '0x9c5DC0F93F70Edc4bE9239c777F5C289b6756c51',
-    'marketplace-v3',
-  )
+    "0x9c5DC0F93F70Edc4bE9239c777F5C289b6756c51",
+    "marketplace-v3"
+  );
 
-  const {
-    data: directListing,
-    isLoading: loadingDirectListing,
-  } = useValidDirectListings(marketplace, {
-    tokenContract: '0xfD166cCCb9c00113DfFEd958dD2809A2610e1149',
-    tokenId: nft.metadata.id,
-  })
+  const { data: directListing, isLoading: loadingDirectListing } =
+    useValidDirectListings(marketplace, {
+      tokenContract: "0xfD166cCCb9c00113DfFEd958dD2809A2610e1149",
+      tokenId: nft.metadata.id,
+    });
 
   return (
     <div>
@@ -42,7 +40,7 @@ export default function NFTComponent({ nft }) {
           ) : directListing && directListing[0] ? (
             <div>
               <h2>
-                Price: {directListing[0]?.currencyValuePerToken.displayValue}{' '}
+                Price: {directListing[0]?.currencyValuePerToken.displayValue}{" "}
                 {directListing[0]?.currencyValuePerToken.symbol}
               </h2>
             </div>
@@ -52,9 +50,8 @@ export default function NFTComponent({ nft }) {
             </div>
           )}
         </CardContent>
-        <CardFooter>
-        </CardFooter>
+        <CardFooter></CardFooter>
       </Card>
     </div>
-  )
+  );
 }
