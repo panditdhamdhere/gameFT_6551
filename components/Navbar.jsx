@@ -32,8 +32,8 @@ const Navbar = () => {
           <Image
             src="/assets/imgs/walletlogo.png"
             className="logo"
-            height={50}
-            width={50}
+            height={80}
+            width={80}
           />
           <div className="position1">
             <div className="line-circle">

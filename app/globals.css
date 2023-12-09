@@ -128,7 +128,7 @@ body {
 }
 .landing .bottom {
   display: flex;
-  margin-top: 15vh;
+  margin-top: 12vh;
 }
 
 .landing .bottom .left h1 {
@@ -141,7 +141,18 @@ body {
 }
 .landing .bottom .right {
   width: 40vw;
-  height: auto;
+  height: 65vh;
+  animation: floatUpDown 2s infinite alternate; /* Adjust duration as needed */
+}
+
+@keyframes floatUpDown {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(-50px); /* Adjust the distance the element floats */
+  }
 }
 .landing .bottom .left p {
   font-size: 16px;
@@ -204,8 +215,8 @@ body {
 
 .navbar-component .line {
   background-color: white;
-  width: 250px;
-  height: 1px;
+  width: 100px;
+  height: 2px;
 }
 
 /* styles/globals.css */
@@ -288,7 +299,7 @@ body {
 .position2 .line {
   background-color: white;
   width: 250px;
-  height: 1px;
+  height: 2px;
 }
 .position2 .line-circle {
   display: flex;
@@ -296,7 +307,7 @@ body {
 }
 
 .glass-container {
-  background: rgba(255, 255, 255, 0.1); /* Adjust transparency as needed */
+  background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px); /* Adjust blur strength as needed */
   border-radius: 10px;
   padding: 20px;
@@ -309,5 +320,36 @@ body {
 .claim-btn {
   background-color: #5c51d0;
   border-radius: 100px;
+  color: white;
+}
+
+/* ===================================================================   NFT IMAGE   ======================================================================== */
+
+/* .nft-img {
+  display: relative;
+} */
+
+.metadata-name {
+  color: white;
+}
+.each-nft-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(9px);
+  -webkit-backdrop-filter: blur(9px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  text-align: left;
+}
+.nft-header {
+  width: 100%;
+}
+
+.each-nft-container h2,
+.each-nft-container h3 {
+  margin-top: 10px;
   color: white;
 }

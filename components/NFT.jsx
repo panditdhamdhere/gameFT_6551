@@ -32,12 +32,12 @@ export default function NFTComponent({ nft }) {
 
   return (
     <div>
-      <Card>
-        <CardHeader>
-          <CardTitle>{nft.metadata.name}</CardTitle>
+      <Card className="each-nft-container">
+        <CardHeader className="nft-header">
+          <CardTitle className="metadata-name">{nft.metadata.name}</CardTitle>
           <CardDescription>Token ID #{nft.metadata.id}</CardDescription>
         </CardHeader>
-        <ThirdwebNftMedia metadata={nft.metadata} />
+        <ThirdwebNftMedia metadata={nft.metadata} className="nft-img" />
         <CardContent>
           {loadingMarketplace || loadingDirectListing ? (
             <h1>Loading</h1>

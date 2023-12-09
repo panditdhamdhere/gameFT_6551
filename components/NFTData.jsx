@@ -15,7 +15,7 @@ export default function NFTData({
       {isLoading ? (
         <h2>Loading.....</h2>
       ) : data && data.length > 0 ? (
-        <div className="grid grid-cols-4 gap-4 ">
+        <div className="each-nft-container">
           {data.map((nft) =>
             !overrideOnclickBehavior ? (
               <Link
