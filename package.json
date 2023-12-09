@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@splinetool/react-spline": "^2.2.6",
+    "@splinetool/runtime": "^0.9.520",
     "@radix-ui/react-avatar": "^1.0.4",
     "@thirdweb-dev/react": "^4.1.12",
     "@thirdweb-dev/sdk": "^4.0.19",

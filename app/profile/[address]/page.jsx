@@ -2,7 +2,6 @@
 
 const ClientId = process.env.NEXT_PUBLIC_CLIENT_ID;
 import { NFT_DROP_ADDRESS } from "@/app/constants/constant";
-import Navbar from "@/public/components/Navbar";
 
 import React from "react";
 import {
@@ -11,9 +10,10 @@ import {
   ThirdwebProvider,
   useAddress,
   Web3Button,
-} from '@thirdweb-dev/react'
-import NFTData from '@/components/NFTData'
-import Navbar from '@/components/Navbar'
+  ConnectWallet,
+} from "@thirdweb-dev/react";
+import NFTData from "@/components/NFTData";
+import Navbar from "@/components/Navbar";
 
 import {
   customSmartWallet,
@@ -43,22 +43,32 @@ const Address = () => {
   );
   console.log(ownedNfts);
   return address ? (
-    <div>
+    <div className="profile">
       <Navbar />
+      <div className="position2">
+        <div className="line-circle">
+          <div className="circle"></div>
+          <div className="line"></div>
+        </div>
+        <h1>GENRATE YOUR PROFILE</h1>
+        <div className="line-circle">
+          <div className="line"></div>
+          <div className="circle"></div>
+        </div>
+      </div>
       <NFTData
         data={ownedNfts}
         isLoading={loadingOwnedNfts}
         address={address}
         emptyText={"You don't own any NFTs yet from this collection."}
-      /> 
+      />
       <div className="flex flex-col justify-center items-center mt-3">
         <Web3Button
           contractAddress={NFT_DROP_ADDRESS}
           action={(contract) => contract.erc721.claim(1)}
         >
           Claim New NFT
-        </Web3Button>
-        <ConnectWallet />
+        </Web3Button>{" "}
       </div>
     </div>
   ) : (

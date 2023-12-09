@@ -3,7 +3,6 @@ import { FaArrowRight } from "react-icons/fa6";
 
 import { useRouter } from "next/navigation";
 const ClientId = process.env.NEXT_PUBLIC_CLIENT_ID;
-import Spline from "@splinetool/react-spline";
 import Image from "next/image";
 
 import {
@@ -76,7 +75,7 @@ const Landing = () => {
                 theme={customeTheme}
                 btnTitle="Enter Game"
                 modalTitle="GameFT"
-                modalTitleIconUrl="../public/assets/imgs/walletlogo.png"
+                modalTitleIconUrl="/assets/imgs/walletlogo.png"
                 welcomeScreen={() => {
                   return (
                     <div>
