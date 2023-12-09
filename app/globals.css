@@ -2,26 +2,312 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
   }
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
+  background: radial-gradient(circle at top, #51587b, #05022e);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+@font-face {
+  font-family: "akira";
+  src: url("../public/assets/fonts/Akira%20Expanded%20Demo.ttf") format("woff2");
+}
+@font-face {
+  font-family: "excratch";
+  src: url("../public/assets/fonts/EXCRATCH\ Regular.ttf") format("woff2");
+}
+@font-face {
+  font-family: "space";
+  src: url("../public/assets/fonts/SpaceGrotesk-VariableFont_wght.ttf")
+    format("woff2");
+}
+/* =========================================  Landing Page  =================================================== */
+
+.landing {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.landing .top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.landing .top .circles {
+  width: 10px;
+  height: 10px;
+  border: 2px solid white;
+  background: transparent;
+  border-radius: 100px;
+}
+.landing .top .line {
+  background-color: white;
+  width: 35%;
+  height: 1px;
+}
+.landing .top p {
+  margin: 30px 10px;
+  font-family: "excratch", sans-serif;
+  color: white;
+}
+.landing .bottom {
+  display: flex;
+  margin-top: 15vh;
+}
+
+.landing .bottom .left h1 {
+  font-family: "akira", sans-serif;
+  font-size: 2.8vw;
+  color: white;
+}
+.landing .bottom .left h1 span {
+  color: #5c51d0;
+}
+.landing .bottom .right {
+  width: 40vw;
+  height: auto;
+}
+.landing .bottom .left p {
+  font-size: 16px;
+  color: white;
+  font-family: "space", sans-serif;
+  margin: 10px 0 30px 0;
+}
+.landing .bottom .connect-wallet-btn {
+  border-radius: 100px;
+  background: rgb(0, 31, 120);
+  background: rgb(0, 31, 120);
   background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+    100deg,
+    rgba(92, 81, 208, 1) 0%,
+    rgba(0, 31, 120, 1) 100%
+  );
+  padding: 15px 30px;
+  color: white;
+  font-size: 20px;
+  font-family: "space", sans-serif;
+  box-shadow: 0 0 20px rgba(76, 66, 185, 0.4), 0 0 40px rgba(10, 3, 93, 0.2);
+  text-shadow: 0 0 20px rgba(76, 66, 185, 0.4), 0 0 40px rgba(10, 3, 93, 0.2);
+  font-weight: 100;
+}
+
+/* =====================================================   NAVBAR   ============================================================ */
+
+.navbar-main {
+  width: 100vw;
+  height: 100px;
+  margin-top: 20px;
+}
+.navbar-main .navbar-component {
+  padding: 0 100px;
+
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.navbar-component .line-circle {
+  display: flex;
+  align-items: center;
+}
+.navbar-main .navbar-component .links {
+  display: flex;
+}
+.navbar-component .position1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.navbar-component .circle {
+  width: 10px;
+  height: 10px;
+  border: 2px solid white;
+  background: transparent;
+  border-radius: 100px;
+}
+
+.navbar-component .line {
+  background-color: white;
+  width: 250px;
+  height: 1px;
+}
+
+/* styles/globals.css */
+
+.toggle-container {
+  display: flex;
+  position: relative;
+  border-radius: 100px;
+  background-color: #080152;
+  padding: 7px;
+  color: white;
+  gap: 20px;
+}
+
+.toggle-button {
+  flex: 1;
+  padding: 7px 18px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  border-radius: 100px;
+}
+
+.toggle-button:hover {
+  background-color: #352e7c;
+}
+
+.toggle-button.active {
+  background-color: #5c51d0;
+}
+
+.slider {
+  position: absolute;
+  bottom: 0;
+  height: 4px;
+  background-color: #5c51d0;
+  transition: transform 0.3s;
+  border-radius: 100px;
+}
+
+.pos1 {
+  transform: translateX(0%);
+}
+
+.pos2 {
+  transform: translateX(100%);
+}
+
+.pos3 {
+  transform: translateX(200%);
+}
+
+/* =============================================================   PROFILE PAGE  ======================================================================= */
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.position2 h1 {
+  font-family: "akira", sans-serif;
+  color: white;
+  font-size: 25px;
+}
+.position2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+}
+.position2 .circle {
+  width: 10px;
+  height: 10px;
+  border: 2px solid white;
+  background: transparent;
+  border-radius: 100px;
+}
+
+.position2 .line {
+  background-color: white;
+  width: 250px;
+  height: 1px;
+}
+.position2 .line-circle {
+  display: flex;
+  align-items: center;
+}
+
+.glass-container {
+  background: rgba(255, 255, 255, 0.1); /* Adjust transparency as needed */
+  backdrop-filter: blur(10px); /* Adjust blur strength as needed */
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.5); /* Add a subtle shadow */
+  max-height: 500px;
+}
+
+.claim-btn {
+  background-color: #5c51d0;
+  border-radius: 100px;
+  color: white;
 }
