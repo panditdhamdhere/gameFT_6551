@@ -1,13 +1,13 @@
-'use client'
-import React, { useState, useEffect } from 'react'
-import newSmartWallet from '@/components/smartWallets/SmartWallet'
-import GameConnected from '@/components/smartWallets/GameConnected'
+"use client";
+import React, { useState, useEffect } from "react";
+import newSmartWallet from "@/components/smartWallets/SmartWallet";
+import GameConnected from "@/components/smartWallets/GameConnected";
 import {
   Card,
   CardDescription,
   CardHeader,
   CardTitle,
-} from '@/components/ui/card'
+} from "@/components/ui/card";
 import {
   NFT_DROP_ADDRESS,
   MARKETPLACE_ADDRESS,
@@ -21,36 +21,36 @@ import {
   ThirdwebProvider,
   useWallet,
   useAddress,
-  ConnectWallet
-} from '@thirdweb-dev/react'
-import Navbar from '@/components/Navbar'
-import { ThirdwebSDK } from '@thirdweb-dev/sdk'
-import Link from 'next/link'
+  ConnectWallet,
+} from "@thirdweb-dev/react";
+import Navbar from "@/components/Navbar";
+import { ThirdwebSDK } from "@thirdweb-dev/sdk";
+import Link from "next/link";
 
 import {
   customSmartWallet,
   customSmartWallet2,
-} from '../../../constants/walletConfig'
+} from "../../../constants/walletConfig";
 
 export default function TokenBound(params) {
-  const [nft, setNft] = useState()
-  const [contractMetadata, setContractMetadata] = useState()
+  const [nft, setNft] = useState();
+  const [contractMetadata, setContractMetadata] = useState();
 
   useEffect(() => {
-    data()
-  }, [])
+    data();
+  }, []);
 
   async function data() {
-    console.log(params)
-    const { nft, contractMetadata } = await getData(params)
-    console.log(nft)
-    setNft(nft)
-    setContractMetadata(contractMetadata)
+    console.log(params);
+    const { nft, contractMetadata } = await getData(params);
+    console.log(nft);
+    setNft(nft);
+    setContractMetadata(contractMetadata);
   }
 
   return (
     <ThirdwebProvider
-      activeChain={'polygon'}
+      activeChain={"polygon"}
       clientId={ClientID}
       supportedWallets={[customSmartWallet, customSmartWallet2]}
     >
@@ -59,16 +59,16 @@ export default function TokenBound(params) {
         <SmartAccount nft={nft} contractMetadata={contractMetadata} />
       )}
     </ThirdwebProvider>
-  )
+  );
 }
 
 const SmartAccount = ({ nft, contractMetadata }) => {
-  const [smartWalletAddress, setSmartWalletAddress] = useState(null)
-  const [signer, setSigner] = useState()
-  const [game, setGame] = useState(false)
+  const [smartWalletAddress, setSmartWalletAddress] = useState(null);
+  const [signer, setSigner] = useState();
+  const [game, setGame] = useState(false);
 
-  const address = useAddress()
-  const wallet = useWallet()
+  const address = useAddress();
+  const wallet = useWallet();
 
   const query = `
 query MyQuery {
@@ -113,22 +113,22 @@ query MyQuery {
   useEffect(() => {
     const createSmartWallet = async (nft) => {
       if (nft && smartWalletAddress == null && address && wallet) {
-        const smartWallet = newSmartWallet(nft)
-        console.log('personal wallet', address)
+        const smartWallet = newSmartWallet(nft);
+        console.log("personal wallet", address);
         await smartWallet.connect({
           personalWallet: wallet,
-        })
-        setSigner(await smartWallet.getSigner())
-        console.log('signer', signer)
-        setSmartWalletAddress(await smartWallet.getAddress())
-        console.log('smart wallet address', await smartWallet.getAddress())
-        return smartWallet
+        });
+        setSigner(await smartWallet.getSigner());
+        console.log("signer", signer);
+        setSmartWalletAddress(await smartWallet.getAddress());
+        console.log("smart wallet address", await smartWallet.getAddress());
+        return smartWallet;
       } else {
-        console.log('smart wallet not created')
+        console.log("smart wallet not created");
       }
-    }
-    createSmartWallet(nft)
-  }, [nft, smartWalletAddress, address, wallet])
+    };
+    createSmartWallet(nft);
+  }, [nft, smartWalletAddress, address, wallet]);
 
   return (
     <div className="w-full">
@@ -165,27 +165,31 @@ query MyQuery {
       ) : (
         <div className="w-full flex">
           <div>
-            <button className="text-white" onClick={() => setGame(false)}>back</button>
+            <button className="text-white" onClick={() => setGame(false)}>
+              back
+            </button>
           </div>
-        <div>
-          <Card className="w-64">
-            <CardHeader>
-              <CardTitle>{nft.metadata?.name}</CardTitle>
-              <CardDescription>{nft.metadata?.description}</CardDescription>
-              <ThirdwebNftMedia
-                metadata={nft?.metadata}
-                width="100%"
-                height="100%"
-              />
-              <CardDescription className="w-14">
-                <p className="font-bold text-">
-                  {`${smartWalletAddress}`.substr(0, 4)}.....
-                  {`${smartWalletAddress}`.substr(-4)}
-                </p>
-              </CardDescription>
-            </CardHeader>
-          </Card>
-          <Link className="cursor-pointer" href="/share"><p>Share</p></Link>
+          <div>
+            <Card className="w-64">
+              <CardHeader>
+                <CardTitle>{nft.metadata?.name}</CardTitle>
+                <CardDescription>{nft.metadata?.description}</CardDescription>
+                <ThirdwebNftMedia
+                  metadata={nft?.metadata}
+                  width="100%"
+                  height="100%"
+                />
+                <CardDescription className="w-14">
+                  <p className="font-bold text-">
+                    {`${smartWalletAddress}`.substr(0, 4)}.....
+                    {`${smartWalletAddress}`.substr(-4)}
+                  </p>
+                </CardDescription>
+              </CardHeader>
+            </Card>
+            <Link className="cursor-pointer" href="/share">
+              <p>Share</p>
+            </Link>
           </div>
           {assets &&
           
@@ -207,31 +211,31 @@ query MyQuery {
         </div>
       )}
     </div>
-  )
-}
+  );
+};
 
 export const getData = async (context) => {
-  const tokenId = context.params?.tokenId
-  const contractAddress = context.params?.address
+  const tokenId = context.params?.tokenId;
+  const contractAddress = context.params?.address;
 
-  console.log(context.params?.tokenId)
+  console.log(context.params?.tokenId);
 
-  const sdk = new ThirdwebSDK('polygon', {
+  const sdk = new ThirdwebSDK("polygon", {
     clientId: ClientID,
     secretKey: SecretKey,
-  })
-  const contract = await sdk.getContract(contractAddress)
+  });
+  const contract = await sdk.getContract(contractAddress);
 
-  const nft = await contract.erc721.get(tokenId)
+  const nft = await contract.erc721.get(tokenId);
 
-  let contractMetadata
+  let contractMetadata;
 
   try {
-    contractMetadata = await contract.metadata.get()
+    contractMetadata = await contract.metadata.get();
   } catch (e) {}
 
   return {
     nft,
     contractMetadata: contractMetadata,
-  }
-}
+  };
+};
