@@ -288,6 +288,7 @@ body {
   align-items: center;
   justify-content: center;
   gap: 3rem;
+  margin-bottom: 20px;
 }
 .position2 .circle {
   width: 10px;
@@ -329,9 +330,10 @@ body {
 .metadata-name {
   color: white;
 }
+
 .each-nft-container {
   display: flex;
-  /* flex-direction: column; */
+  flex-direction: column;
   gap: 2rem;
   align-items: center;
   background: rgba(255, 255, 255, 0.05);
@@ -341,6 +343,10 @@ body {
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
   text-align: left;
+}
+.isko-flex-column {
+  display: flex;
+  flex-direction: column;
 }
 .nft-header {
   width: 100%;
@@ -384,6 +390,48 @@ body {
   margin-bottom: 10px;
 }
 
+.each-nft-container-main {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(9px);
+  -webkit-backdrop-filter: blur(9px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  text-align: left;
+}
+.each-nft-container-main h2,
+.each-nft-container-main h3 {
+  /* margin-top: 10px; */
+  color: white;
+}
+
+.each-nft-container-main button {
+  color: white;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(9px);
+  -webkit-backdrop-filter: blur(9px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 7px 20px;
+}
+.each-nft-container-main .card-footer h3 {
+  font-size: 16px;
+  padding-bottom: 10px;
+  color: rgb(123, 193, 255);
+}
+.each-nft-container-main .card-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.each-nft-container-main .card-footer h2 {
+  margin-bottom: 10px;
+}
 /* =====================================  POP UP  ========================================== */
 .popupContainer {
   width: 100vw;

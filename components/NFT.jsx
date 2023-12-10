@@ -33,7 +33,7 @@ export default function NFTComponent({ nft }) {
 
   return (
     <div>
-      <Card className="each-nft-container">
+      <Card className="each-nft-container isko-flex-column">
         <div>
           <CardHeader className="nft-header">
             <CardTitle className="metadata-name">{nft.metadata.name}</CardTitle>
