@@ -14,6 +14,8 @@ import {
 } from '../../../constants/constant'
 const ClientID = process.env.NEXT_PUBLIC_CLIENT_ID
 const SecretKey = process.env.NEXT_PUBLIC_SECRET_KEY
+init(process.env.NEXT_PUBLIC_AIRSTACK_API_KEY, 'dev')
+import { init, useQuery } from '@airstack/airstack-react'
 import {
   ThirdwebNftMedia,
   ThirdwebProvider,
@@ -67,6 +69,46 @@ const SmartAccount = ({ nft, contractMetadata }) => {
 
   const address = useAddress()
   const wallet = useWallet()
+
+  const query = `
+query MyQuery {
+    TokenBalances(
+      input: {filter: {owner: {_in: ["${smartWalletAddress}"]}, tokenType: {_in: [ERC1155, ERC721]}}, blockchain: polygon, limit: 50}
+    ) {
+      TokenBalance {
+        owner {
+          identity
+        }
+        amount
+        tokenAddress
+        tokenId
+        tokenType
+        tokenNfts {
+          contentValue {
+            image {
+              extraSmall
+              small
+              medium
+              large
+              original
+            }
+          }
+        }
+      }
+      pageInfo {
+        nextCursor
+        prevCursor
+      }
+    }
+  }
+`
+
+  const { data, loading, error } = useQuery(query, {}, { cache: false })
+
+  // Render your component using the data returned by the query
+  console.log(data)
+  console.log(data?.TokenBalances?.TokenBalance)
+  const assets = data?.TokenBalances?.TokenBalance
 
   useEffect(() => {
     const createSmartWallet = async (nft) => {
@@ -145,7 +187,23 @@ const SmartAccount = ({ nft, contractMetadata }) => {
           </Card>
           <Link className="cursor-pointer" href="/share"><p>Share</p></Link>
           </div>
+          {assets &&
+          
+          assets?.map((nft) => {
+            return (
+              <Card className="each-nft-container">
+                <CardHeader className="nft-header">
+                  <CardTitle className="metadata-name">{nft?.owner?.identity}</CardTitle>
+                  <CardDescription>
+                    <img src={nft?.tokenNfts?.contentValue?.image?.medium} />
+                  </CardDescription>
+                </CardHeader>
+                <CardFooter>{nft?.tokenType}</CardFooter>
+              </Card>
+            )
+          })}
           <GameConnected signer={signer} />
+          
         </div>
       )}
     </div>

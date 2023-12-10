@@ -10,8 +10,7 @@ import { useQuery } from "@airstack/airstack-react";
 export default function GameConnected({signer}) {
     return (
         <ThirdwebSDKProvider signer={signer} activeChain={Polygon} clientId={ClientId}>
-                      <ConnectWallet />
-
+            <ConnectWallet />
             <Game signer={signer}/>
         </ThirdwebSDKProvider>
     )

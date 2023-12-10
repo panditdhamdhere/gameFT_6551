@@ -15,7 +15,7 @@ const page = () => {
     setFollowers([])
   }
 
-  const Challege = (address,handle) => {
+  const Challege = (address, handle) => {
     const data = XMTPWidget(address, handle)
     setResult(data)
   }
@@ -62,7 +62,9 @@ const page = () => {
             return (
               <div key={follower.followerAddress}>
                 <p>{follower.followerAddress?.addresses[0]}</p>
-                <div onClick={() => Challege(follower.followerAddress,handle)}>Challege</div>
+                <div onClick={() => Challege(follower.followerAddress, handle)}>
+                  Challege
+                </div>
               </div>
             )
         })}
