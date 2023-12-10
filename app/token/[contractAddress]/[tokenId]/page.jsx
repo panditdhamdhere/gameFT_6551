@@ -4,6 +4,9 @@ import {
   NFT_DROP_ADDRESS,
   MARKETPLACE_ADDRESS,
 } from "../../../constants/constant";
+import { ColorRing } from "react-loader-spinner";
+import { IoClose } from "react-icons/io5";
+
 const ClientID = process.env.NEXT_PUBLIC_CLIENT_ID;
 const SecretKey = process.env.NEXT_PUBLIC_SECRET_KEY;
 
@@ -41,7 +44,6 @@ import {
 export default function Token(params) {
   const [nft, setNft] = useState();
   const [contractMetadata, setContractMetadata] = useState();
-
   useEffect(() => {
     data();
   }, []);
@@ -71,6 +73,16 @@ const TokenPage = ({ nft, contractMetadata }) => {
     MARKETPLACE_ADDRESS,
     "marketplace-v3"
   );
+  const [popup, setPopup] = useState(false);
+  const [inputValue, setInputValue] = useState("");
+
+  const handleInputChange = (e) => {
+    setInputValue(e.target.value);
+  };
+
+  const handleSubmit = () => {
+    console.log("Submitted:", inputValue);
+  };
 
   const { contract: nftCollection } = useContract(NFT_DROP_ADDRESS);
 
@@ -98,6 +110,31 @@ const TokenPage = ({ nft, contractMetadata }) => {
 
   return (
     <div className="m-9">
+      {popup ? (
+        <div className="popupContainer">
+          <div className="popupContent">
+            <div className="header">
+              <h2>Want to buy Unlisted NFT</h2>{" "}
+              <span className="closeButton" onClick={() => setPopup(false)}>
+                <IoClose />
+              </span>
+            </div>
+            <form onSubmit={(e) => e.preventDefault()}>
+              <label>
+                <input
+                  type="text"
+                  value={inputValue}
+                  onChange={handleInputChange}
+                  placeholder="How much Matic"
+                />
+              </label>{" "}
+              <button>Submit</button>
+            </form>
+          </div>
+        </div>
+      ) : (
+        <></>
+      )}
       {nft ? (
         <div className="w-64">
           <Card className="each-nft-container">
@@ -114,8 +151,8 @@ const TokenPage = ({ nft, contractMetadata }) => {
             </CardHeader>
             <CardFooter>
               {directListing && directListing[0] ? (
-                <div>
-                  <h2>
+                <div className="card-footer">
+                  <h2 className="margin-badhado">
                     {directListing[0]?.currencyValuePerToken.displayValue}
                     {" " + directListing[0]?.currencyValuePerToken.symbol}
                   </h2>
@@ -124,17 +161,36 @@ const TokenPage = ({ nft, contractMetadata }) => {
                     action={async () => buyListing()}
                     isDisabled={!directListing || !directListing[0]}
                   >
-                    Buy at asking price
+                    BUY
                   </Web3Button>
                 </div>
               ) : (
-                <h2>Not for sale</h2>
+                <div className="card-footer">
+                  <h3>Not for sale</h3>
+                  <button
+                    onClick={() => {
+                      setPopup(true);
+                    }}
+                  >
+                    Want to Mint ?
+                  </button>
+                </div>
               )}
             </CardFooter>
           </Card>
         </div>
       ) : (
-        <h1>No NFT Found</h1>
+        <div className="center-this-div">
+          <ColorRing
+            visible={true}
+            height="80"
+            width="80"
+            ariaLabel="blocks-loading"
+            wrapperStyle={{}}
+            wrapperClass="blocks-wrapper"
+            colors={["#e15b64", "#f47e60", "#f8b26a", "#abbd81", "#849b87"]}
+          />
+        </div>
       )}
     </div>
   );

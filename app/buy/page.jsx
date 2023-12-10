@@ -13,7 +13,6 @@ import {
 } from "../constants/walletConfig";
 
 export default function Page() {
-    
   return (
     <ThirdwebProvider
       activeChain={"polygon"}
@@ -45,7 +44,7 @@ const Buy = () => {
         </div>
       </div>
       {/* <p>Explore NFTs and their assets</p> */}
-      <NFTGrid isLoadong={isLoadong} data={data} emptyText={"No NFTs Found"} />
+      <NFTGrid isLoadong={isLoadong} data={data} emptyText={""} />
     </div>
   );
 };

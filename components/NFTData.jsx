@@ -7,7 +7,7 @@ export default function NFTData({
   isLoading,
   data,
   overrideOnclickBehavior,
-  emptyText = "No NFTs Found",
+  emptyText = "",
 }) {
   const address = NFT_DROP_ADDRESS;
 
@@ -24,7 +24,7 @@ export default function NFTData({
           colors={["#e15b64", "#f47e60", "#f8b26a", "#abbd81", "#849b87"]}
         />
       ) : data && data.length > 0 ? (
-        <div className="each-nft-container">
+        <div className="each-nft-container-main">
           {data.map((nft) =>
             !overrideOnclickBehavior ? (
               <Link
