@@ -144,7 +144,13 @@ body {
   height: 65vh;
   animation: floatUpDown 2s infinite alternate; /* Adjust duration as needed */
 }
-
+.assets {
+  width: 300px;
+  height: 300px;
+}
+.reduce-font{
+  font-size: 20px;
+}
 @keyframes floatUpDown {
   0% {
     transform: translateY(0);

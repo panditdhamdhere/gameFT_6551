@@ -7,6 +7,7 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
+  CardFooter
 } from "@/components/ui/card";
 import {
   NFT_DROP_ADDRESS,
@@ -197,12 +198,12 @@ query MyQuery {
             return (
               <Card className="each-nft-container">
                 <CardHeader className="nft-header">
-                  <CardTitle className="metadata-name">{nft?.owner?.identity}</CardTitle>
-                  <CardDescription>
-                    <img src={nft?.tokenNfts?.contentValue?.image?.medium} />
+                  <CardTitle className="metadata-name "><p className="reduce-font">{nft?.owner?.identity}</p></CardTitle>
+                  <CardDescription className="flex gap-4">
+                    <img className="assets" src={nft?.tokenNfts?.contentValue?.image?.medium} />
                   </CardDescription>
                 </CardHeader>
-                <CardFooter>{nft?.tokenType}</CardFooter>
+                <CardFooter className="namess">{nft?.tokenType}</CardFooter>
               </Card>
             )
           })}
