@@ -1,36 +1,50 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# gameFT-6551
 
-## Getting Started
+![Alt text](image.png)
 
-First, run the development server:
+Website Link : [https://game-ft-6551.vercel.app/](https://game-ft-6551.vercel.app/)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Welcome to GameFT-6551, First-Ever
+Exclusive erc-6551
+Marketplace
+Now bundle your In-game assets with your game identity!
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Features
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+- Innovative Token Standard:- ERC-6551 transforms NFTs into intelligent contracts with smart wallet capabilities.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- Dynamic Gaming Ecosystem:- Immerse yourself in a diverse gaming world where ERC-6551 NFT Profiles act as gateways to various games.
 
-## Learn More
+- Customizable Profiles:- Personalize your ERC-6551 NFT Profiles with unique ERC-20, ERC-721, or ERC-1155 assets.
 
-To learn more about Next.js, take a look at the following resources:
+- Token-Gating Features:- Unlock exclusive features by utilizing token-gating, enhancing your gaming experience.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Future of Blockchain Gaming:- Dive into the cutting-edge GameFi Marketplace, where innovation converges with play.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Tech Stack
 
-## Deploy on Vercel
+Built with :- NextJS, JavaScript, Tailwind CSS, Thirdweb.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Sponsers
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## AirStack API -
+
+--> This project uses AirStack API, which provides us easily query any data across Polygon blockchain in this Dapp.
+
+## XMTP Messenging -
+
+--> This project uses XMTP Messenging protocol which helps user to invite their friends to our dapp via XMTP invites.
+
+## Waku -
+
+User can alert unlisted NFT Owners to request them to list their NFT according to buyer requirements and User can also negotiate with listed NFT Owners
+
+## User Guide...
+
+- When user visits to our dapp they can create new embadded wallet directly through their social.
+
+- They can mint their profile NFT & start playing the game. This profile NFT will act as wallet for all the asssets they collects!
+
+- After playing the game and collecting the assets if they want, they can sell the profile NFT on marketplace along with all the assets they hold.
+
+- After that they can create more [max 5] profiles NFTs, play games, collect assets and sell on the marketplace.
