@@ -11,17 +11,7 @@ init(process.env.NEXT_PUBLIC_AIRSTACK_API_KEY, "dev");
 import { useQuery } from "@airstack/airstack-react";
 
 export default function GameConnected({ signer }) {
-  return (
-    <ThirdwebSDKProvider
-      signer={signer}
-      activeChain={Polygon}
-      clientId={ClientId}
-    >
-      <ConnectWallet />
-
-      <Game signer={signer} />
-    </ThirdwebSDKProvider>
-  );
+  return <></>;
 }
 
 const Game = ({ signer }) => {
@@ -57,7 +47,6 @@ query MyQuery {
     }
   }
 `;
-
   const { data, loading, error } = useQuery(query, {}, { cache: false });
 
   // Render your component using the data returned by the query
@@ -65,9 +54,9 @@ query MyQuery {
 
   const address = useAddress();
   return (
-    <div className="navbar">
+    <div className="navbarx ">
       <nav className="">
-        <p>Levels</p>
+        <p className="">Assets</p>
         <p>Sell</p>
         <p>Marketplace</p>
       </nav>

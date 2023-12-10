@@ -531,3 +531,17 @@ input::placeholder {
   border: 1px solid rgba(255, 255, 255, 0.18);
   padding: 7px 20px;
 }
+
+.navbarx nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 500px;
+  margin: 0 50px;
+  background-color: #02114e;
+  border-radius: 100px;
+  padding: 15px;
+}
+.navbarx nav p {
+  color: white;
+}
